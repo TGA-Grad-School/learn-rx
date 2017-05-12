@@ -1,7 +1,7 @@
-const { newReleases, movieLists, movieListsBoxarts, bookmarks } = require('./data.json');
+const { newReleases, movieLists, movieListsBoxarts, vidoes, bookmarks } = require('./data.json');
 
 // Exercise 1: Print all the names in an array
-function simplePrint(console) {
+const simplePrint = (console) => {
 	var names = ["Ben", "Jafar", "Matt", "Priya", "Brian"],
 		counter;
 
@@ -11,7 +11,7 @@ function simplePrint(console) {
 }
 
 // Exercise 2: Use forEach to print all the names in an array
-function elegantPrint(console) {
+const elegantPrint = (console) => {
 	var names = ["Ben", "Jafar", "Matt", "Priya", "Brian"];
 
 	names.forEach(function(name) {
@@ -27,7 +27,7 @@ function elegantPrint(console) {
 
   For each video, add a projected {id, title} pair to the videoAndTitlePairs array.
 */
-function projecting() {
+const projecting = () => {
 	const videoAndTitlePairs = [];
 
 	// ------------ INSERT CODE HERE! -----------------------------------
@@ -66,7 +66,7 @@ function mapNewreleases() {
 
   Use forEach() to loop through the videos in the newReleases array and, if a video has a rating of 5.0, add it to the videos array.
 */
-function filterNewReleases() {
+const filterNewReleases = () => {
 	const videos = [];
 
 	// ------------ INSERT CODE HERE! -----------------------------------
@@ -86,7 +86,7 @@ function filterNewReleases() {
   Query Data by Chaining Method Calls
   Exercise 8: Chain filter and map to collect the ids of videos that have a rating of 5.0
 */
-function chainMapFilter() {
+const chainMapFilter = () => {
 
 	// ------------ INSERT CODE HERE! -----------------------------------
 	// Chain the filter and map functions to select the id of all videos
@@ -105,7 +105,7 @@ function chainMapFilter() {
 
   Let's start by using two nested forEach loops to collect the id of every video in the two-dimensional movieLists array.
 */
-function flattenArr() {
+const flattenArr = () => {
 	const allVideoIdsInMovieLists = [];
 
 	// ------------   INSERT CODE HERE!  -----------------------------------
@@ -126,7 +126,7 @@ function flattenArr() {
 
   Let's add a concatAll() function to the Array type. The concatAll() function iterates over each sub-array in the array and collects the results in a new, flat array. Notice that the concatAll() function expects each item in the array to be another array.
 */
-Array.prototype.concatAll = function() {
+Array.prototype.concatAll = () => {
 	var results = [];
 	this.forEach(function(subArray) {
 		// ------------ INSERT CODE HERE! ----------------------------
@@ -147,7 +147,7 @@ Array.prototype.concatAll = function() {
 
   Hint: use two nested calls to map() and one call to concatAll().
 */
-function mapAndConcatAll() {
+const mapAndConcatAll = () => {
 
 	// ------------   INSERT CODE HERE!  -----------------------------------
 	// Use map and concatAll to flatten the movieLists in a list of video ids.
@@ -170,7 +170,7 @@ function mapAndConcatAll() {
   			
   Furthermore, you're not allowed to use indexers in any of the remaining exercises unless you're implementing one of the five functions. There is a very good reason for this restriction, and that reason will eventually be explained. For now, you'll simply have to accept it on faith that this restriction serves a purpose. :-)
 */
-function concatMap() {
+const concatMap = () => {
 
 	// Use one or more map, concatAll, and filter calls to create an array with the following items
 	// [
@@ -203,7 +203,7 @@ function concatMap() {
 
   Nearly every time we flatten a tree we chain map() and concatAll(). Sometimes, if we're dealing with a tree several levels deep, we'll repeat this combination many times in our code. To save on typing, let's create a concatMap function that's just a map operation, followed by a concatAll.
 */
-Array.prototype.concatMap = function(projectionFunctionThatReturnsArray) {
+Array.prototype.concatMap = (projectionFunctionThatReturnsArray) => {
 	return this.
 		map(function(item) {
 			// ------------   INSERT CODE HERE!  ----------------------------
@@ -231,7 +231,7 @@ Array.prototype.concatMap = function(projectionFunctionThatReturnsArray) {
 
   Let's repeat the exercise we just performed. However this time we'll simplify the code by replacing the map().concatAll() calls with concatMap().
 */
-function multipleConcatMap() {
+const multipleConcatMap = () => {
 	// Use one or more concatMap, map, and filter calls to create an array with the following items
 	// [
 	//	 {"id": 675465, "title": "Fracture", "boxart": "http://cdn-0.nflximg.com/images/2891/Fracture150.jpg" },
@@ -269,7 +269,7 @@ function multipleConcatMap() {
 
   In this example we use forEach to find the largest box art. Each time we examine a new boxart we update a variable with the currently known maximumSize. If the boxart is smaller than the maximum size, we discard it. If it's larger, we keep track of it. Finally we're left with a single boxart which must necessarily be the largest.
 */
-function reduce() {
+const reduce = () => {
 	let =	currentSize, maxSize = -1, largestBoxart;
 
 	boxarts.forEach(function(boxart) {
@@ -294,7 +294,7 @@ Exercise 16: Implement reduce()
 Let's add a reduce() function to the Array type. Like map. Take note this is different from the reduce in ES5, which returns a value instead of an Array!
 */
 
-Array.prototype.reduce = function(combiner, initialValue) {
+Array.prototype.reduce = (combiner, initialValue) => {
 	let counter, accumulatedValue;
 
 	// If the array is empty, do nothing
@@ -333,7 +333,7 @@ Array.prototype.reduce = function(combiner, initialValue) {
 
   Let's use our new reduce function to isolate the largest value in an array of ratings.
 */
-function reduceRating() {
+const reduceRating = () => {
 	var ratings = [2,3,1,4,5];
 
 	// You should return an array containing only the largest rating. Remember that reduce always
@@ -355,8 +355,7 @@ Exercise 18: Retrieve url of the largest boxart
 
 Let's try combining reduce() with map() to reduce multiple boxart objects to a single value: the url of the largest box art.
 */
-function reduceBoxarts() {
-
+const reduceBoxarts = () => {
 	// You should return an array containing only the URL of the largest box art. Remember that reduce always
 	// returns an array with one item.
 	return boxarts.
@@ -386,7 +385,7 @@ a width of 150px. This time we'll use reduce() instead of filter() to retrieve t
 in the boxarts array. 
 */
 
-function reduceInsteadOfFilter() {
+const reduceInsteadOfFilter = () => {
 
 	// Use one or more concatMap, map, and reduce calls to create an array with the following items (order doesn't matter)
 	// [
@@ -428,44 +427,9 @@ Use a for loop to traverse the videos and bookmarks array at the same time. For 
 bookmark pair, create a {videoId, bookmarkId} pair and add it to the videoIdAndBookmarkIdPairs array.
 */
 
-function zip() {
-	var videos = [
-			{
-				"id": 70111470,
-				"title": "Die Hard",
-				"boxart": "http://cdn-0.nflximg.com/images/2891/DieHard.jpg",
-				"uri": "http://api.netflix.com/catalog/titles/movies/70111470",
-				"rating": 4.0,
-			},
-			{
-				"id": 654356453,
-				"title": "Bad Boys",
-				"boxart": "http://cdn-0.nflximg.com/images/2891/BadBoys.jpg",
-				"uri": "http://api.netflix.com/catalog/titles/movies/70111470",
-				"rating": 5.0,
-			},
-			{
-				"id": 65432445,
-				"title": "The Chamber",
-				"boxart": "http://cdn-0.nflximg.com/images/2891/TheChamber.jpg",
-				"uri": "http://api.netflix.com/catalog/titles/movies/70111470",
-				"rating": 4.0,
-			},
-			{
-				"id": 675465,
-				"title": "Fracture",
-				"boxart": "http://cdn-0.nflximg.com/images/2891/Fracture.jpg",
-				"uri": "http://api.netflix.com/catalog/titles/movies/70111470",
-				"rating": 5.0,
-			}
-		],
-		bookmarks = [
-			{"id": 470, "time": 23432},
-			{"id": 453, "time": 234324},
-			{"id": 445, "time": 987834}
-		],
-	counter,
-	videoIdAndBookmarkIdPairs = [];
+const zip = () => {
+	let	counter;
+	const videoIdAndBookmarkIdPairs = [];
 
 	for (counter = 0; counter < Math.min(videos.length, bookmarks.length); counter++) {
 		// Insert code here to create a {videoId, bookmarkId} pair and add it to the videoIdAndBookmarkIdPairs array.
@@ -490,7 +454,7 @@ call the combiner function, therefore the array returned by zip will only be as 
 smallest input array.
 */
 
-Array.zip = function(left, right, combinerFunction) {
+Array.zip = (left, right, combinerFunction) => {
 	var counter,
 		results = [];
 
@@ -509,43 +473,8 @@ Let's repeat exercise 21, but this time lets use your new zip() function. For ea
 bookmark pair, create a {videoId, bookmarkId} pair.
 */
 
-function zipVideos() {
-	var videos = [
-			{
-				"id": 70111470,
-				"title": "Die Hard",
-				"boxart": "http://cdn-0.nflximg.com/images/2891/DieHard.jpg",
-				"uri": "http://api.netflix.com/catalog/titles/movies/70111470",
-				"rating": 4.0,
-			},
-			{
-				"id": 654356453,
-				"title": "Bad Boys",
-				"boxart": "http://cdn-0.nflximg.com/images/2891/BadBoys.jpg",
-				"uri": "http://api.netflix.com/catalog/titles/movies/70111470",
-				"rating": 5.0,
-			},
-			{
-				"id": 65432445,
-				"title": "The Chamber",
-				"boxart": "http://cdn-0.nflximg.com/images/2891/TheChamber.jpg",
-				"uri": "http://api.netflix.com/catalog/titles/movies/70111470",
-				"rating": 4.0,
-			},
-			{
-				"id": 675465,
-				"title": "Fracture",
-				"boxart": "http://cdn-0.nflximg.com/images/2891/Fracture.jpg",
-				"uri": "http://api.netflix.com/catalog/titles/movies/70111470",
-				"rating": 5.0,
-			}
-		],
-		bookmarks = [
-			{id: 470, time: 23432},
-			{id: 453, time: 234324},
-			{id: 445, time: 987834}
-		];
-
+// Use imported "videos" and "bookmarks"
+const zipVideos = () => {
 	// return Array.
 	// 	zip( //... finish this expression
 }
