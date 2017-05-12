@@ -1,0 +1,12 @@
+{
+  "name": "gradSchool-learnRx",
+  "version": "1.0.0",
+  "description": "Working through the [reactive.io/learnrx](http://reactive.io/learnrx)functions",
+  "main": "rx-functions.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
